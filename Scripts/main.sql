@@ -38,7 +38,7 @@ DROP TABLE IF EXISTS `orbit`.`Teacher`;
 CREATE  TABLE IF NOT EXISTS `orbit`.`User` (
   `ID` INT NOT NULL AUTO_INCREMENT ,
   `Username` VARCHAR(45) NOT NULL ,
-  `Password` VARCHAR(45) NOT NULL ,
+  `UID` VARCHAR(45) NOT NULL ,
   `Last_Login` DATE NOT NULL ,
   `Invalid_Attempts` INT NOT NULL ,
   `Active` VARCHAR(45) NOT NULL ,
