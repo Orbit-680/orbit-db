@@ -213,6 +213,34 @@ CREATE  TABLE IF NOT EXISTS `orbit`.`Assignment` (
   REFERENCES `orbit`.`Course` (`ID` ))
 ENGINE = InnoDB;
 
+-- -----------------------------------------------------
+-- Table `orbit`.`School`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `orbit`.`School` (
+  `ID` INT NOT NULL AUTO_INCREMENT ,
+  `Name` VARCHAR(45) NOT NULL ,
+  `Address_1` VARCHAR(45) NOT NULL ,
+  `Address_2` VARCHAR(45) NOT NULL ,
+  `City` VARCHAR(45) NOT NULL ,
+  `State` VARCHAR(45) NOT NULL ,
+  `Zip_Code` VARCHAR(45) NOT NULL ,
+  PRIMARY KEY (`ID`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `orbit`.`School_Student`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `orbit`.`School_Student` (
+  `ID` INT NOT NULL AUTO_INCREMENT ,
+  `School_ID` int(11) NOT NULL ,
+  `Student_ID` int (11) NOT NULL ,
+  PRIMARY KEY (`ID`) ,
+  FOREIGN KEY (`School_ID` )
+  REFERENCES `orbit`.`School` (`ID` ),
+  FOREIGN KEY (`Student_ID` )
+  REFERENCES `orbit`.`Student` (`ID` ))
+ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 -- Set default parameters
