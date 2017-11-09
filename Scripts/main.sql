@@ -21,6 +21,7 @@ USE `orbit` ;
 -- -----------------------------------------------------
 -- Drop all tables if they exist
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `orbit`.`Role`;
 DROP TABLE IF EXISTS `orbit`.`Message`;
 DROP TABLE IF EXISTS `orbit`.`Account_Link`;
 DROP TABLE IF EXISTS `orbit`.`User`;
@@ -33,6 +34,16 @@ DROP TABLE IF EXISTS `orbit`.`Course`;
 DROP TABLE IF EXISTS `orbit`.`Teacher`;
 
 -- -----------------------------------------------------
+-- Table `orbit`.`Roles`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `orbit`.`Role` (
+  `ID` INT NOT NULL AUTO_INCREMENT ,
+  `Name` VARCHAR(45) NOT NULL ,
+  CONSTRAINT `allowedRoles` CHECK (`Name` IN ('Admin', 'Teacher', 'Parent', 'Student')),
+  PRIMARY KEY (`ID`)) 
+ENGINE = InnoDB;
+
+-- -----------------------------------------------------
 -- Table `orbit`.`User`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `orbit`.`User` (
@@ -42,7 +53,10 @@ CREATE  TABLE IF NOT EXISTS `orbit`.`User` (
   `Last_Login` DATE NOT NULL ,
   `Invalid_Attempts` INT NOT NULL ,
   `Active` VARCHAR(45) NOT NULL ,
-  PRIMARY KEY (`ID`) )
+  `Role_ID` INT NOT NULL ,
+  PRIMARY KEY (`ID`),
+  FOREIGN KEY (`Role_ID` )
+  REFERENCES `orbit`.`Role` (`ID` ))
 ENGINE = InnoDB;
 
 
@@ -173,8 +187,7 @@ CREATE  TABLE IF NOT EXISTS `orbit`.`Schedule` (
   `Course_ID` INT NOT NULL ,
   PRIMARY KEY (`ID`) ,
   FOREIGN KEY (`Student_ID` )
-  REFERENCES `orbit`.`Student` (`ID` )
-  ON DELETE CASCADE,
+  REFERENCES `orbit`.`Student` (`ID` ),
   FOREIGN KEY (`Course_ID` )
   REFERENCES `orbit`.`Course` (`ID` ))
 ENGINE = InnoDB;
@@ -191,8 +204,7 @@ CREATE  TABLE IF NOT EXISTS `orbit`.`Grade` (
   `Course_ID` INT NOT NULL ,
   PRIMARY KEY (`ID`) ,
   FOREIGN KEY (`Student_ID` )
-  REFERENCES `orbit`.`Student` (`ID` )
-  ON DELETE CASCADE,
+  REFERENCES `orbit`.`Student` (`ID` ),
   FOREIGN KEY (`Course_ID` )
   REFERENCES `orbit`.`Course` (`ID` ))
 ENGINE = InnoDB;
