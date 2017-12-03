@@ -54,7 +54,7 @@ CREATE  TABLE IF NOT EXISTS `orbit`.`User` (
   `Invalid_Attempts` INT NOT NULL ,
   `Active` VARCHAR(45) NOT NULL ,
   `Role_ID` INT NOT NULL ,
-  UNIQUE (`username`)
+  UNIQUE (`Username`),
   PRIMARY KEY (`ID`),
   FOREIGN KEY (`Role_ID` )
   REFERENCES `orbit`.`Role` (`ID` ))
