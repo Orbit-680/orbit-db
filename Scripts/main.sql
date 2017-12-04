@@ -48,7 +48,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `orbit`.`User` (
   `ID` INT NOT NULL AUTO_INCREMENT ,
-  `Username` VARCHAR(45) NOT NULL ,
+  `Email` VARCHAR(45) NOT NULL ,
   `UID` VARCHAR(45) NOT NULL ,
   `Last_Login` DATE NOT NULL ,
   `Invalid_Attempts` INT NOT NULL ,
