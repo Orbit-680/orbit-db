@@ -103,9 +103,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `orbit`.`Account_Link`
+-- Table `orbit`.`Account_Link_Student`
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `orbit`.`Account_Link` (
+CREATE  TABLE IF NOT EXISTS `orbit`.`Account_Link_Student` (
   `ID` INT NOT NULL AUTO_INCREMENT ,
   `Date_Linked` DATE NOT NULL ,
   `Active` VARCHAR(45) NOT NULL ,
@@ -119,6 +119,22 @@ CREATE  TABLE IF NOT EXISTS `orbit`.`Account_Link` (
   REFERENCES `orbit`.`Student` (`ID` ))
 ENGINE = InnoDB;
 
+-- -----------------------------------------------------
+-- Table `orbit`.`Account_Link_Teacher`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `orbit`.`Account_Link_Teacher` (
+  `ID` INT NOT NULL AUTO_INCREMENT ,
+  `Date_Linked` DATE NOT NULL ,
+  `Active` VARCHAR(45) NOT NULL ,
+  `User_ID` INT NOT NULL ,
+  `Teacher_ID` INT NOT NULL ,
+  PRIMARY KEY (`ID`) ,
+  FOREIGN KEY (`User_ID` )
+  REFERENCES `orbit`.`User` (`ID` )
+  ON DELETE CASCADE,
+  FOREIGN KEY (`Teacher_ID` )
+  REFERENCES `orbit`.`Teacher` (`ID` ))
+ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 -- Table `orbit`.`Message`
