@@ -1,5 +1,5 @@
 -- -----------------------------------------------------
--- This `main.sql` script represents skeleton of `orbit`
+-- This `main.sql` script represents the skeleton of `orbit`
 -- database. It includes raw tables and relationships
 -- between them. This script does not include any data.
 -- -----------------------------------------------------
