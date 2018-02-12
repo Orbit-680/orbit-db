@@ -32,6 +32,7 @@ DROP TABLE IF EXISTS `orbit`.`Student`;
 DROP TABLE IF EXISTS `orbit`.`Assignment`;
 DROP TABLE IF EXISTS `orbit`.`Course`;
 DROP TABLE IF EXISTS `orbit`.`Teacher`;
+DROP TABLE IF EXISTS `orbit`.`Tickets`;
 
 -- -----------------------------------------------------
 -- Table `orbit`.`Roles`
@@ -269,6 +270,20 @@ CREATE  TABLE IF NOT EXISTS `orbit`.`School_Student` (
   REFERENCES `orbit`.`School` (`ID` ),
   FOREIGN KEY (`Student_ID` )
   REFERENCES `orbit`.`Student` (`ID` ))
+ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Table `orbit`.`Tickets`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `orbit`.`Tickets` (
+  `ID` INT NOT NULL AUTO_INCREMENT ,
+  `Name` VARCHAR(45) NOT NULL ,
+  `Description` VARCHAR(45) NOT NULL ,
+  `Priority` VARCHAR(45) NOT NULL,
+  `User_ID` int (11) NOT NULL ,
+  PRIMARY KEY (`ID`),
+  FOREIGN KEY (`User_ID` )
+  REFERENCES `orbit`.`User` (`ID` ))
 ENGINE = InnoDB;
 
 -- -----------------------------------------------------
