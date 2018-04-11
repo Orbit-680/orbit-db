@@ -372,6 +372,52 @@ CREATE TABLE `user` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Table structure for table `attendance`
+--
+
+DROP TABLE IF EXISTS `attendance`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `attendance` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Year` varchar(45) NOT NULL,
+  `Date` DATE NOT NULL,
+  `Status` varchar(1) NOT NULL,
+  `Comment` longtext DEFAULT NULL,
+  `Course_ID` int(11) NOT NULL,
+  `Student_ID` int(11) NOT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `Student_ID` (`Student_ID`),
+  KEY `Course_ID` (`Course_ID`),
+  CONSTRAINT `attendance_ibfk_1` FOREIGN KEY (`Student_ID`) REFERENCES `student` (`ID`),
+  CONSTRAINT `attendance_ibfk_2` FOREIGN KEY (`Course_ID`) REFERENCES `course` (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `conduct`
+--
+
+DROP TABLE IF EXISTS `conduct`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `conduct` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Year` varchar(45) NOT NULL,
+  `Date` DATE NOT NULL,
+  `Score` int(11) NOT NULL,
+  `Comment` longtext DEFAULT NULL,
+  `Course_ID` int(11) NOT NULL,
+  `Student_ID` int(11) NOT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `Student_ID` (`Student_ID`),
+  KEY `Course_ID` (`Course_ID`),
+  CONSTRAINT `conduct_ibfk_1` FOREIGN KEY (`Student_ID`) REFERENCES `student` (`ID`),
+  CONSTRAINT `conduct_ibfk_2` FOREIGN KEY (`Course_ID`) REFERENCES `course` (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Dumping events for database 'orbit'
 --
 
